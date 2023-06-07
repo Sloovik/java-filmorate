@@ -20,7 +20,7 @@ public class User {
     private String email;
     @NotBlank
     private String login;
-    @NotBlank
+
     private String name;
     @Past
     private LocalDate birthday;

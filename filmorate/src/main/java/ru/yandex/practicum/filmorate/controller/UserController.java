@@ -1,30 +1,48 @@
 package ru.yandex.practicum.filmorate.controller;
 
 import javax.validation.Valid;
+
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import ru.yandex.practicum.filmorate.model.User;
+import ru.yandex.practicum.filmorate.repository.UserRepository;
+import ru.yandex.practicum.filmorate.service.ValidateService;
+import ru.yandex.practicum.filmorate.validation.ReleaseDateValidator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("users")
+@Slf4j
 public class UserController {
 
-    private List<User> users = new ArrayList<>();
+    private final List<User> users = new ArrayList<>(); // исходя из условия тз, данные о пользователях храним пока тут?
 
-    @PutMapping(path = "/users")
-    public User add(@Valid @RequestBody User user) {
+    final ValidateService validateService;
+    
+    public UserController(ValidateService validateService) {
+        this.validateService = validateService;
+    }
+    @PostMapping()
+    public User createUser(@Valid @RequestBody User user) {
+        log.info("Create user: {} - Started", user);
+        validateService.validateUser(user);
         users.add(user);
+        log.info("Create user: {} - Finished", user);
         return user;
     }
 
-    @PatchMapping(path = "/users/{id}")
-    public User update(@Valid @RequestBody User user) {
-        return users.get(user.getId());
+    @PutMapping(path = "/{id}")
+    public User updateUser(@Valid @RequestBody User user) {
+        log.info("Update user: {} - Started", user);
+        users.add(user);
+        log.info("Update user: {} - Finished", user);
+        return user;
     }
 
-    @GetMapping(path = "/users")
-    public List<User> get() {
+    @GetMapping()
+    public List<User> getUsers() {
         return users;
     }
 

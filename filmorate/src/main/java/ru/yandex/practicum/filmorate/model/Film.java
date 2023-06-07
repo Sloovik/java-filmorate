@@ -19,7 +19,7 @@ public class Film {
     private Long id;
     @NotBlank
     private String name;
-    @Max(200)
+    @Size(max = 200)
     private String description;
     @ReleaseDateConstraint
     private LocalDate releaseDate;
