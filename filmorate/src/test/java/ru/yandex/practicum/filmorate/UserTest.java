@@ -46,21 +46,21 @@ public class UserTest {
     @Test
     void incorrectEmailTest() {
         User user = new User(0L, null, "login", "name", LocalDate.of(1950, 10, 27));
-        ValidationException exception = Assertions.assertThrows(ValidationException.class, ()-> ValidateService.validateUser(user));
+        ValidationException exception = Assertions.assertThrows(ValidationException.class, () -> ValidateService.validateUser(user));
         Assertions.assertEquals("Ошибка в электронной почте", exception.getMessage());
     }
 
     @Test
     void incorrectLoginTest() {
         User user = new User(0L, "name@email.ru", null, "name", LocalDate.of(1950, 10, 27));
-        ValidationException exception = Assertions.assertThrows(ValidationException.class, ()-> ValidateService.validateUser(user));
+        ValidationException exception = Assertions.assertThrows(ValidationException.class, () -> ValidateService.validateUser(user));
         Assertions.assertEquals("Ошибка в логине", exception.getMessage());
     }
 
     @Test
     void incorrectBirthdayTest() {
         User user = new User(0L, "name@email.ru", "login", "name", LocalDate.of(2050, 10, 27));
-        ValidationException exception = Assertions.assertThrows(ValidationException.class, ()-> ValidateService.validateUser(user));
+        ValidationException exception = Assertions.assertThrows(ValidationException.class, () -> ValidateService.validateUser(user));
         Assertions.assertEquals("Ошибка в дате рождения", exception.getMessage());
     }
 
