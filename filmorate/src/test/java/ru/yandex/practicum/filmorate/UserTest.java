@@ -39,7 +39,7 @@ public class UserTest {
     @Test
     void incorrectIdTest() {
         User user = new User(null, "name@email.ru", "login", "name", LocalDate.of(1950, 10, 27));
-        ValidationException exception = Assertions.assertThrows(ValidationException.class, ()-> ValidateService.validateUser(user));
+        ValidationException exception = Assertions.assertThrows(ValidationException.class, () -> ValidateService.validateUser(user));
         Assertions.assertEquals("Ошибка в id", exception.getMessage());
     }
 

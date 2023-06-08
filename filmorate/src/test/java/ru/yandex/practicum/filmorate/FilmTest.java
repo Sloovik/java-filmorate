@@ -23,7 +23,7 @@ public class FilmTest {
     @Test
     void incorrectFilmTest() {
         Film film = new Film(1L, null, "description", LocalDate.of(1950, 10, 27), 80);
-        ValidationException exception = Assertions.assertThrows(ValidationException.class, ()-> ValidateService.validateMovie(film));
+        ValidationException exception = Assertions.assertThrows(ValidationException.class, () -> ValidateService.validateMovie(film));
         Assertions.assertEquals("Ошибка в названии фильма", exception.getMessage());
     }
 
@@ -32,21 +32,21 @@ public class FilmTest {
         Film film = new Film(1L, "name", "/////////////////////////////////////////////////////////" +
                 "//////////////////////////////////////////////////////////////////////////////////////////////////////" +
                 "/////////////////////////////////////////////////////////////////", LocalDate.of(1950, 10, 27), 80);
-        ValidationException exception = Assertions.assertThrows(ValidationException.class, ()-> ValidateService.validateMovie(film));
+        ValidationException exception = Assertions.assertThrows(ValidationException.class, () -> ValidateService.validateMovie(film));
         Assertions.assertEquals("Ошибка в описании к фильму", exception.getMessage());
     }
 
     @Test
     void incorrectReleaseDateTest() {
         Film film = new Film(1L, "name", "description", LocalDate.of(1350, 10, 27), 80);
-        ValidationException exception = Assertions.assertThrows(ValidationException.class, ()-> ValidateService.validateMovie(film));
+        ValidationException exception = Assertions.assertThrows(ValidationException.class, () -> ValidateService.validateMovie(film));
         Assertions.assertEquals("Ошибка в дате фильма", exception.getMessage());
     }
 
     @Test
     void incorrectDurationTest() {
         Film film = new Film(1L, "name", "description", LocalDate.of(1950, 10, 27), -1);
-        ValidationException exception = Assertions.assertThrows(ValidationException.class, ()-> ValidateService.validateMovie(film));
+        ValidationException exception = Assertions.assertThrows(ValidationException.class, () -> ValidateService.validateMovie(film));
         Assertions.assertEquals("Ошибка в продолжительности фильма", exception.getMessage());
     }
 }
