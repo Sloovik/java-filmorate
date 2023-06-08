@@ -5,6 +5,9 @@ import javax.validation.ConstraintValidatorContext;
 
 import java.time.LocalDate;
 
+/**
+ * Tip from webinar with mentor
+ */
 public class ReleaseDateValidator implements
         ConstraintValidator<ReleaseDateConstraint, LocalDate> {
 

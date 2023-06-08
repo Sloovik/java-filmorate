@@ -1,18 +1,22 @@
 package ru.yandex.practicum.filmorate.model;
 
-import javax.validation.constraints.*;
-
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.yandex.practicum.filmorate.validation.ReleaseDateConstraint;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.time.Instant;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.util.Date;
 
+/**
+ * Film entity
+ */
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Film {
 
     @NotNull

@@ -3,6 +3,9 @@ package ru.yandex.practicum.filmorate.repository;
 import org.springframework.stereotype.Component;
 import ru.yandex.practicum.filmorate.model.User;
 
+/**
+ * Repository template for future sprints from webinar with mentor.
+ */
 @Component
 public class UserRepository {
 

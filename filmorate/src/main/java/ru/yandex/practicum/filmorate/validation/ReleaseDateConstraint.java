@@ -4,6 +4,9 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.*;
 
+/**
+ * Tip from webinar with mentor
+ */
 @Documented
 @Constraint(validatedBy = ReleaseDateValidator.class)
 @Target( { ElementType.METHOD, ElementType.FIELD })
