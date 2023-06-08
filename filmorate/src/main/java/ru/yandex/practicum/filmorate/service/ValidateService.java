@@ -36,7 +36,7 @@ public class ValidateService {
     }
 
     public static void validateMovie(Film film) throws ValidationException {
-        if (film.getName() == null ||film.getName().isBlank()) {
+        if (film.getName() == null || film.getName().isBlank()) {
             log.warn("Название фильма пустое: {} ", film);
             throw new ValidationException("Ошибка в названии фильма");
         }
