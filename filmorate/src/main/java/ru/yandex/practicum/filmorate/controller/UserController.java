@@ -21,7 +21,6 @@ public class UserController {
     private final List<User> users = new ArrayList<>();
 
     final ValidateService validateService;
-    
     public UserController(ValidateService validateService) {
         this.validateService = validateService;
     }
