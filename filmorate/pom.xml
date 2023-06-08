@@ -16,6 +16,13 @@
 	<properties>
 		<java.version>11</java.version>
 	</properties>
+	<distributionManagement>
+		<repository>
+			<id>dev</id>
+			<name>Local repository</name>
+			<url>file://${user.home/.m2/temp-repository</url>
+		</repository>
+	</distributionManagement>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
