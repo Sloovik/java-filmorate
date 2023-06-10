@@ -2,7 +2,7 @@
   "info": {
     "_postman_id": "cb3b1e19-ffd2-4d9f-8cda-05da22cd983d",
     "name": "API Test Sprint 1",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    "schema": "http://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
     {
