@@ -16,7 +16,7 @@ import java.util.List;
  * Endpoints for films
  */
 @RestController
-@RequestMapping("movies")
+@RequestMapping("films")
 @Slf4j
 public class FilmController {
 
