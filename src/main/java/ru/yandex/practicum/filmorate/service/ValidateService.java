@@ -15,6 +15,10 @@ import java.time.LocalDate;
 @Slf4j
 public class ValidateService {
     public static void validateUser(User user) throws ValidationException {
+        if (user.getId() < 0) {
+            log.warn("Id должен быть целочисленным", user);
+            throw new ValidationException("Ошибка в id");
+        }
         if (user.getLogin() == null || user.getLogin().isBlank()) {
             log.warn("Логин пустой: {}", user);
             throw new ValidationException("Ошибка в логине");
@@ -32,6 +36,10 @@ public class ValidateService {
     }
 
     public static void validateMovie(Film film) throws ValidationException {
+        if (film.getId() < 0) {
+            log.warn("Id должен быть целочисленным", film);
+            throw new ValidationException("Ошибка в id фильма");
+        }
         if (film.getName() == null || film.getName().isBlank()) {
             log.warn("Название фильма пустое: {} ", film);
             throw new ValidationException("Ошибка в названии фильма");
