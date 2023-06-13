@@ -5,10 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.yandex.practicum.filmorate.validation.ReleaseDateConstraint;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 /**
@@ -22,10 +19,13 @@ public class Film {
     @NotNull
     private Long id;
     @NotBlank
+    @NotNull
     private String name;
     @Size(max = 200)
+    @NotNull
     private String description;
     @ReleaseDateConstraint
+    @Past
     private LocalDate releaseDate;
     @Positive
     private Integer duration;

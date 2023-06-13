@@ -29,6 +29,7 @@ public class User {
 
     private String name;
     @Past
+    @NotNull
     private LocalDate birthday;
 
 }
