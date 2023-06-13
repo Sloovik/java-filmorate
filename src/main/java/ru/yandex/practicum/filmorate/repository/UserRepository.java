@@ -9,9 +9,9 @@ import ru.yandex.practicum.filmorate.model.User;
 @Component
 public class UserRepository {
 
-    private long generatorId = 10;
+    private int generatorId = 10;
 
-    public long generateId() {
+    public int generateId() {
         return ++generatorId;
     }
 

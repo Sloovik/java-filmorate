@@ -20,7 +20,7 @@ import java.time.LocalDate;
 public class User {
 
     @NotNull
-    private Long id;
+    private int id;
     @Email
     @NotNull
     private String email;

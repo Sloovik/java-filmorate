@@ -28,8 +28,8 @@ public class UserTest {
 
     @Test
     void create() {
-        User user = new User(1L, "name@email.ru", "login", "name", LocalDate.of(1950, 10, 27));
-        Assertions.assertEquals(user.getId(), 1L);
+        User user = new User(1, "name@email.ru", "login", "name", LocalDate.of(1950, 10, 27));
+        Assertions.assertEquals(user.getId(), 1);
         Assertions.assertEquals(user.getName(), "name");
         Assertions.assertEquals(user.getEmail(), "name@email.ru");
         Assertions.assertEquals(user.getLogin(), "login");
@@ -37,29 +37,22 @@ public class UserTest {
     }
 
     @Test
-    void incorrectIdTest() {
-        User user = new User(null, "name@email.ru", "login", "name", LocalDate.of(1950, 10, 27));
-        ValidationException exception = Assertions.assertThrows(ValidationException.class, () -> ValidateService.validateUser(user));
-        Assertions.assertEquals("Ошибка в id", exception.getMessage());
-    }
-
-    @Test
     void incorrectEmailTest() {
-        User user = new User(0L, null, "login", "name", LocalDate.of(1950, 10, 27));
+        User user = new User(0, null, "login", "name", LocalDate.of(1950, 10, 27));
         ValidationException exception = Assertions.assertThrows(ValidationException.class, () -> ValidateService.validateUser(user));
         Assertions.assertEquals("Ошибка в электронной почте", exception.getMessage());
     }
 
     @Test
     void incorrectLoginTest() {
-        User user = new User(0L, "name@email.ru", null, "name", LocalDate.of(1950, 10, 27));
+        User user = new User(0, "name@email.ru", null, "name", LocalDate.of(1950, 10, 27));
         ValidationException exception = Assertions.assertThrows(ValidationException.class, () -> ValidateService.validateUser(user));
         Assertions.assertEquals("Ошибка в логине", exception.getMessage());
     }
 
     @Test
     void incorrectBirthdayTest() {
-        User user = new User(0L, "name@email.ru", "login", "name", LocalDate.of(2050, 10, 27));
+        User user = new User(0, "name@email.ru", "login", "name", LocalDate.of(2050, 10, 27));
         ValidationException exception = Assertions.assertThrows(ValidationException.class, () -> ValidateService.validateUser(user));
         Assertions.assertEquals("Ошибка в дате рождения", exception.getMessage());
     }

@@ -12,8 +12,8 @@ public class FilmTest {
 
     @Test
     void create() {
-        Film film = new Film(1L, "name", "description", LocalDate.of(1950, 10, 27), 80);
-        Assertions.assertEquals(film.getId(), 1L);
+        Film film = new Film(1, "name", "description", LocalDate.of(1950, 10, 27), 80);
+        Assertions.assertEquals(film.getId(), 1);
         Assertions.assertEquals(film.getName(), "name");
         Assertions.assertEquals(film.getDescription(), "description");
         Assertions.assertEquals(film.getDuration(), 80);
@@ -22,14 +22,14 @@ public class FilmTest {
 
     @Test
     void incorrectFilmTest() {
-        Film film = new Film(1L, null, "description", LocalDate.of(1950, 10, 27), 80);
+        Film film = new Film(1, null, "description", LocalDate.of(1950, 10, 27), 80);
         ValidationException exception = Assertions.assertThrows(ValidationException.class, () -> ValidateService.validateMovie(film));
         Assertions.assertEquals("Ошибка в названии фильма", exception.getMessage());
     }
 
     @Test
     void incorrectDescriptionTest() {
-        Film film = new Film(1L, "name", "/////////////////////////////////////////////////////////" +
+        Film film = new Film(1, "name", "/////////////////////////////////////////////////////////" +
                 "//////////////////////////////////////////////////////////////////////////////////////////////////////" +
                 "/////////////////////////////////////////////////////////////////", LocalDate.of(1950, 10, 27), 80);
         ValidationException exception = Assertions.assertThrows(ValidationException.class, () -> ValidateService.validateMovie(film));
@@ -38,14 +38,14 @@ public class FilmTest {
 
     @Test
     void incorrectReleaseDateTest() {
-        Film film = new Film(1L, "name", "description", LocalDate.of(1350, 10, 27), 80);
+        Film film = new Film(1, "name", "description", LocalDate.of(1350, 10, 27), 80);
         ValidationException exception = Assertions.assertThrows(ValidationException.class, () -> ValidateService.validateMovie(film));
         Assertions.assertEquals("Ошибка в дате фильма", exception.getMessage());
     }
 
     @Test
     void incorrectDurationTest() {
-        Film film = new Film(1L, "name", "description", LocalDate.of(1950, 10, 27), -1);
+        Film film = new Film(1, "name", "description", LocalDate.of(1950, 10, 27), -1);
         ValidationException exception = Assertions.assertThrows(ValidationException.class, () -> ValidateService.validateMovie(film));
         Assertions.assertEquals("Ошибка в продолжительности фильма", exception.getMessage());
     }

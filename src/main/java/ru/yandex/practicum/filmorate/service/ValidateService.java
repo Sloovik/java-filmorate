@@ -15,10 +15,6 @@ import java.time.LocalDate;
 @Slf4j
 public class ValidateService {
     public static void validateUser(User user) throws ValidationException {
-        if (user.getId() == null) {
-            log.warn("Id не может быть пустым");
-            throw new ValidationException("Ошибка в id");
-        }
         if (user.getLogin() == null || user.getLogin().isBlank()) {
             log.warn("Логин пустой: {}", user);
             throw new ValidationException("Ошибка в логине");
