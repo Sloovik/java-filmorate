@@ -62,7 +62,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"login\": \"dolore ullamco\",\n  \"name\": \"est adipisicing\",\n  \"id\": -35528664,\n  \"email\": \"Lorem mollit nisi anim\",\n  \"birthday\": \"1946-08-20\"\n}",
+                  "raw": "{\n  \"login\": \"dolore ullamco\",\n  \"name\": \"est adipisicing\",\n  \"id\": -35528664,\n  \"email\": \"Lorem mollit nisi anim\",\n  \"birthday\": \"1976-09-20\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -122,7 +122,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"login\": \"dolore ullamco\",\n  \"name\": \"est adipisicing\",\n  \"id\": 1,\n  \"email\": \"mail@yandex.ru\",\n  \"birthday\": \"1946-08-20\"\n}",
+              "raw": "{\n  \"login\": \"dolore ullamco\",\n  \"name\": \"est adipisicing\",\n  \"id\": 1,\n  \"email\": \"mail@yandex.ru\",\n  \"birthday\": \"1976-09-20\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -147,7 +147,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"login\": \"dolore ullamco\",\n  \"name\": \"est adipisicing\",\n  \"id\": -35528664,\n  \"email\": \"Lorem mollit nisi anim\",\n  \"birthday\": \"1946-08-20\"\n}",
+                  "raw": "{\n  \"login\": \"dolore ullamco\",\n  \"name\": \"est adipisicing\",\n  \"id\": -35528664,\n  \"email\": \"Lorem mollit nisi anim\",\n  \"birthday\": \"1976-09-20\"\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -275,7 +275,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"nisi eiusmod\",\n  \"description\": \"adipisicing\",\n  \"releaseDate\": \"1967-03-25\",\n  \"duration\": 100\n}",
+              "raw": "{\n  \"name\": \"Film Updated\",\n  \"description\": \"New film update decription\",\n  \"releaseDate\": \"1989-04-17\",\n  \"duration\": 190\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -300,7 +300,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"nisi eiusmod\",\n  \"id\": -7113753,\n  \"description\": \"adipisicing\",\n  \"releaseDate\": \"1967-03-25\",\n  \"duration\": 33722088\n}",
+                  "raw": "{\n  \"name\": \"Film Updated\",\n  \"id\": -7113753,\n  \"description\": \"New film update decription\",\n  \"releaseDate\": \"1989-04-17\",\n  \"duration\": 33722088\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -360,7 +360,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"name\": \"nisi eiusmod\",\n  \"id\": 1,\n  \"description\": \"adipisicing\",\n  \"releaseDate\": \"1967-03-25\",\n  \"duration\": 120\n}",
+              "raw": "{\n  \"name\": \"Film Updated\",\n  \"id\": 1,\n  \"description\": \"New film update decription\",\n  \"releaseDate\": \"1989-04-17\",\n  \"duration\": 120\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -385,7 +385,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"nisi eiusmod\",\n  \"id\": -7113753,\n  \"description\": \"adipisicing\",\n  \"releaseDate\": \"1967-03-25\",\n  \"duration\": 33722088\n}",
+                  "raw": "{\n  \"name\": \"Film Updated\",\n  \"id\": -7113753,\n  \"description\": \"New film update decription\",\n  \"releaseDate\": \"1989-04-17\",\n  \"duration\": 33722088\n}",
                   "options": {
                     "raw": {
                       "language": "json"
