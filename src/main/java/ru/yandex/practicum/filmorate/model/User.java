@@ -1,9 +1,6 @@
 package ru.yandex.practicum.filmorate.model;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +22,7 @@ public class User {
     @NotNull
     private String email;
     @NotBlank
+    @Pattern(regexp = "\\A(?!\\s*\\Z).+")
     private String login;
 
     private String name;
