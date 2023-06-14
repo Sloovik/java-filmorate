@@ -5,10 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.User;
 import ru.yandex.practicum.filmorate.repository.UserRepository;
-import ru.yandex.practicum.filmorate.service.ValidateService;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,11 +18,10 @@ import java.util.List;
 public class UserController {
 
     private final UserRepository repository;
-    final ValidateService validateService;
 
-    public UserController(UserRepository repository, ValidateService validateService) {
+
+    public UserController(UserRepository repository) {
         this.repository = repository;
-        this.validateService = validateService;
     }
 
     @PostMapping("/users")

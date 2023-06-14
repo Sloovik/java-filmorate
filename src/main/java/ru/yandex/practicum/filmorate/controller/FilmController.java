@@ -1,16 +1,13 @@
 package ru.yandex.practicum.filmorate.controller;
 
 
-import javax.validation.Valid;
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.Film;
 import ru.yandex.practicum.filmorate.repository.FilmRepository;
-import ru.yandex.practicum.filmorate.service.ValidateService;
 
-import java.util.ArrayList;
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -22,6 +19,7 @@ import java.util.List;
 public class FilmController {
 
     private final FilmRepository repository;
+
     public FilmController(FilmRepository repository) {
         this.repository = repository;
     }
