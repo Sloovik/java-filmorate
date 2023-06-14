@@ -16,16 +16,13 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Film {
 
-    @NotNull
     private int id;
     @NotBlank
-    @NotNull
     private String name;
     @Size(max = 200)
     @NotNull
     private String description;
     @ReleaseDateConstraint
-    @Past
     private LocalDate releaseDate;
     @Positive
     private Integer duration;

@@ -19,14 +19,14 @@ public class User {
     @NotNull
     private int id;
     @Email
-    @NotNull
+    @NotEmpty
     private String email;
-    @NotBlank
-    @Pattern(regexp = "\\A(?!\\s*\\Z).+")
+    @NotNull
+    @Pattern(regexp = "\\S+")
     private String login;
 
     private String name;
-    @Past
+    @PastOrPresent
     @NotNull
     private LocalDate birthday;
 
