@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.User;
+import ru.yandex.practicum.filmorate.repository.UserRepository;
 import ru.yandex.practicum.filmorate.service.ValidateService;
 
 import javax.validation.Valid;
@@ -18,19 +19,19 @@ import java.util.List;
 @Slf4j
 public class UserController {
 
-    private final List<User> users = new ArrayList<>();
-
+    private final UserRepository repository;
     final ValidateService validateService;
 
-    public UserController(ValidateService validateService) {
+    public UserController(UserRepository repository, ValidateService validateService) {
+        this.repository = repository;
         this.validateService = validateService;
     }
 
     @PostMapping("/users")
     public User createUser(@Valid @RequestBody User user) throws ValidationException {
         log.info("Create user: {} - Started", user);
-        ValidateService.validateUser(user);
-        users.add(user);
+//        ValidateService.validateUser(user);
+        repository.create(user);
         log.info("Create user: {} - Finished", user);
         return user;
     }
@@ -38,15 +39,19 @@ public class UserController {
     @PutMapping("/users")
     public User updateUser(@Valid @RequestBody User user) throws ValidationException {
         log.info("Update user: {} - Started", user);
-        ValidateService.validateUser(user);
-        users.add(user);
+        int id = user.getId();
+        if (id == 0) {
+            throw new ValidationException("Ошибка в id пользователя");
+        }
+//        ValidateService.validateUser(user);
+        User updatedUser = repository.update(user);
         log.info("Update user: {} - Finished", user);
-        return user;
+        return updatedUser;
     }
 
     @GetMapping("/users")
     public List<User> getUsers() {
-        return users;
+        return repository.read();
     }
 
 }
