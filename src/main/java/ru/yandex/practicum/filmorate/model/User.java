@@ -13,11 +13,9 @@ import java.time.LocalDate;
  */
 @Data
 @Builder(toBuilder = true)
-@NoArgsConstructor
-@AllArgsConstructor
 public class User {
     @NotNull
-    private int id;
+    private final int id;
     @Email
     @NotEmpty
     private String email;

@@ -17,10 +17,8 @@ import java.time.LocalDate;
  */
 @Data
 @Builder(toBuilder = true)
-@NoArgsConstructor
-@AllArgsConstructor
 public class Film {
-    private int id;
+    private final int id;
     @NotBlank
     private String name;
     @Size(max = 200)
