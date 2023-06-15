@@ -25,9 +25,9 @@ public class FilmController {
     @PostMapping()
     public Film createMovie(@Valid @RequestBody Film film) throws ValidationException {
         log.info("Create movie: {} - Started", film);
-        repository.create(film);
+        Film newFilm = repository.create(film);
         log.info("Create movie: {} - Finished", film);
-        return film;
+        return newFilm;
     }
 
     @PutMapping()

@@ -23,9 +23,9 @@ public class UserController {
     @PostMapping("/users")
     public User createUser(@Valid @RequestBody User user) throws ValidationException {
         log.info("Create user: {} - Started", user);
-        repository.create(user);
+        User newUser = repository.create(user);
         log.info("Create user: {} - Finished", user);
-        return user;
+        return newUser;
     }
 
     @PutMapping("/users")
