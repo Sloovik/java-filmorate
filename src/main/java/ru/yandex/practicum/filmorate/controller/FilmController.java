@@ -34,7 +34,7 @@ public class FilmController {
     public Film updateMovie(@Valid @RequestBody Film film) throws ValidationException {
         log.info("Update movie: {} - Started", film);
         int id = film.getId();
-        if (id < 0) {
+        if (id == 0) {
             throw new ValidationException("Ошибка в id фильма");
         }
         Film updatedFilm = repository.update(film);

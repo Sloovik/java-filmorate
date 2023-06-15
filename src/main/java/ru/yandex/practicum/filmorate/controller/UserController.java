@@ -32,7 +32,7 @@ public class UserController {
     public User updateUser(@Valid @RequestBody User user) throws ValidationException {
         log.info("Update user: {} - Started", user);
         int id = user.getId();
-        if (id < 0) {
+        if (id == 0) {
             throw new ValidationException("Ошибка в id пользователя");
         }
         User updatedUser = repository.update(user);
