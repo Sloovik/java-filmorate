@@ -1,5 +1,6 @@
 package ru.yandex.practicum.filmorate.controller;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import ru.yandex.practicum.filmorate.exception.ValidationException;
@@ -15,12 +16,9 @@ import java.util.List;
 @RestController
 @RequestMapping
 @Slf4j
+@RequiredArgsConstructor
 public class UserController {
     private final UserRepository repository;
-
-    public UserController(UserRepository repository) {
-        this.repository = repository;
-    }
 
     @PostMapping("/users")
     public User createUser(@Valid @RequestBody User user) throws ValidationException {
@@ -34,7 +32,7 @@ public class UserController {
     public User updateUser(@Valid @RequestBody User user) throws ValidationException {
         log.info("Update user: {} - Started", user);
         int id = user.getId();
-        if (id == 0) {
+        if (id < 0) {
             throw new ValidationException("Ошибка в id пользователя");
         }
         User updatedUser = repository.update(user);
