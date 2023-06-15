@@ -14,7 +14,7 @@ import java.util.Map;
 @Repository
 public class UserRepository {
     private final Map<Integer, User> users = new HashMap<>();
-    private int nextUserId = 0;
+    private int nextUserId = 1;
 
     public User create(User user) {
         checkUserName(user);

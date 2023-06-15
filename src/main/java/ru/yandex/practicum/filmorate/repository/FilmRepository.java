@@ -14,7 +14,7 @@ import java.util.Map;
 @Repository
 public class FilmRepository {
     private final Map<Integer, Film> films = new HashMap<>();
-    private int nextFilmId = 0;
+    private int nextFilmId = 1;
 
     public Film create(Film film) {
         Film newFilm = film
