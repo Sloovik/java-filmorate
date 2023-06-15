@@ -16,9 +16,7 @@ import java.util.List;
 @RequestMapping
 @Slf4j
 public class UserController {
-
     private final UserRepository repository;
-
 
     public UserController(UserRepository repository) {
         this.repository = repository;
@@ -27,7 +25,6 @@ public class UserController {
     @PostMapping("/users")
     public User createUser(@Valid @RequestBody User user) throws ValidationException {
         log.info("Create user: {} - Started", user);
-//        ValidateService.validateUser(user);
         repository.create(user);
         log.info("Create user: {} - Finished", user);
         return user;
@@ -40,7 +37,6 @@ public class UserController {
         if (id == 0) {
             throw new ValidationException("Ошибка в id пользователя");
         }
-//        ValidateService.validateUser(user);
         User updatedUser = repository.update(user);
         log.info("Update user: {} - Finished", user);
         return updatedUser;

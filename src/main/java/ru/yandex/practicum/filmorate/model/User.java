@@ -1,12 +1,11 @@
 package ru.yandex.practicum.filmorate.model;
 
-import javax.validation.constraints.*;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 /**
@@ -17,7 +16,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-
     @NotNull
     private int id;
     @Email
@@ -26,7 +24,6 @@ public class User {
     @NotNull
     @Pattern(regexp = "\\S+")
     private String login;
-
     private String name;
     @PastOrPresent
     @NotNull

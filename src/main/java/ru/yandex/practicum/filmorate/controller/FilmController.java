@@ -27,7 +27,6 @@ public class FilmController {
     @PostMapping()
     public Film createMovie(@Valid @RequestBody Film film) throws ValidationException {
         log.info("Create movie: {} - Started", film);
-        //ValidateService.validateMovie(film);
         repository.create(film);
         log.info("Create movie: {} - Finished", film);
         return film;
@@ -40,7 +39,6 @@ public class FilmController {
         if (id == 0) {
             throw new ValidationException("Ошибка в id фильма");
         }
-        //ValidateService.validateMovie(film);
         Film updatedFilm = repository.update(film);
         log.info("Update movie: {} - Finished", film);
         return updatedFilm;

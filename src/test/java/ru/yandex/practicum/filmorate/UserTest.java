@@ -1,7 +1,6 @@
 package ru.yandex.practicum.filmorate;
 
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.yandex.practicum.filmorate.model.User;
 
@@ -15,56 +14,6 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-//public class UserTest {
-//
-////    private static Validator validator;
-////    static {
-////        ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
-////        validator = validatorFactory.usingContext().getValidator();
-////    }
-//
-////    @Test
-////    void validateName() {
-////        User user = new User();
-////        user.setName("");
-////
-////        Set<ConstraintViolation<User>> violations = validator.validate(user);
-////        Assertions.assertEquals(0, violations.size(), "Name is empty");
-////    }
-//
-//    @Test
-//    void create() {
-//        User user = new User(1, "name@email.ru", "login", "name", LocalDate.of(1950, 10, 27));
-//        Assertions.assertEquals(user.getId(), 1);
-//        Assertions.assertEquals(user.getName(), "name");
-//        Assertions.assertEquals(user.getEmail(), "name@email.ru");
-//        Assertions.assertEquals(user.getLogin(), "login");
-//        Assertions.assertEquals(user.getBirthday(), LocalDate.of(1950, 10, 27));
-//    }
-//
-//    @Test
-//    void incorrectEmailTest() {
-//        User user = new User(0, null, "login", "name", LocalDate.of(1950, 10, 27));
-//        ValidationException exception = Assertions.assertThrows(ValidationException.class, () -> ValidateService.validateUser(user));
-//        Assertions.assertEquals("Ошибка в электронной почте", exception.getMessage());
-//    }
-//
-//    @Test
-//    void incorrectLoginTest() {
-//        User user = new User(0, "name@email.ru", null, "name", LocalDate.of(1950, 10, 27));
-//        ValidationException exception = Assertions.assertThrows(ValidationException.class, () -> ValidateService.validateUser(user));
-//        Assertions.assertEquals("Ошибка в логине", exception.getMessage());
-//    }
-//
-//    @Test
-//    void incorrectBirthdayTest() {
-//        User user = new User(0, "name@email.ru", "login", "name", LocalDate.of(2050, 10, 27));
-//        ValidationException exception = Assertions.assertThrows(ValidationException.class, () -> ValidateService.validateUser(user));
-//        Assertions.assertEquals("Ошибка в дате рождения", exception.getMessage());
-//    }
-//
-//}
-@DisplayName("Пользователь должен:")
 public class UserTest {
     private Set<ConstraintViolation<User>> validates;
     private ConstraintViolation<User> validate;
@@ -77,7 +26,6 @@ public class UserTest {
         }
     }
 
-    @DisplayName("валидировать email")
     @Test
     public void shouldValidateEmail() {
         user = new User(1, null, "Login", "Name", LocalDate.parse("1990-12-24"));
@@ -100,7 +48,6 @@ public class UserTest {
         assertEquals("email", validate.getPropertyPath().toString(), "вне совпадает формат адреса электронной почты, property");
     }
 
-    @DisplayName("валидировать логин")
     @Test
     public void shouldValidateLogin() {
         user = new User(1, "test@test.ru", null, "Name", LocalDate.parse("1990-12-24"));
@@ -128,7 +75,6 @@ public class UserTest {
         assertEquals("login", validate.getPropertyPath().toString(), "содержит пробелы, property");
     }
 
-    @DisplayName("валидировать дату рождения")
     @Test
     public void shouldValidateBirthday() {
         user = new User(1, "test@test.ru", "Login", "Name", null);

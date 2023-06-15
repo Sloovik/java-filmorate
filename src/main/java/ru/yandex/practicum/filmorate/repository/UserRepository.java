@@ -37,7 +37,6 @@ public class UserRepository {
             throw new ValidationException("Несуществующий id пользователя");
         }
         checkUserName(user);
-
         existingUser.setEmail(user.getEmail());
         existingUser.setLogin(user.getLogin());
         existingUser.setName(user.getName());
