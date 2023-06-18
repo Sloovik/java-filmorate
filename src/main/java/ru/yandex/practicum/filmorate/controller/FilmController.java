@@ -24,22 +24,18 @@ public class FilmController {
 
     @PostMapping()
     public Film createMovie(@Valid @RequestBody Film film) throws ValidationException {
-        log.info("Create movie: {} - Started", film);
-        Film newFilm = repository.create(film);
-        log.info("Create movie: {} - Finished", film);
-        return newFilm;
+        log.info("Post request to create film, {}", film);
+        return repository.create(film);
     }
 
     @PutMapping()
     public Film updateMovie(@Valid @RequestBody Film film) throws ValidationException {
-        log.info("Update movie: {} - Started", film);
+        log.info("Put request to update film, {}", film);
         int id = film.getId();
         if (id == 0) {
             throw new ValidationException("Ошибка в id фильма");
         }
-        Film updatedFilm = repository.update(film);
-        log.info("Update movie: {} - Finished", film);
-        return updatedFilm;
+        return repository.update(film);
     }
 
     @GetMapping()

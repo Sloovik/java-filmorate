@@ -1,7 +1,6 @@
 package ru.yandex.practicum.filmorate.model;
 
 import org.junit.jupiter.api.Test;
-import ru.yandex.practicum.filmorate.model.Film;
 import ru.yandex.practicum.filmorate.validation.ReleaseDateConstraint;
 
 import javax.validation.ConstraintViolation;
@@ -27,6 +26,13 @@ public class FilmTest {
         try (ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory()) {
             validator = validatorFactory.usingContext().getValidator();
         }
+    }
+
+    @Test
+    public void filmIsValid() {
+        film = new Film(1, "Name", "Description", LocalDate.parse("1990-12-24"), 120);
+        Set<ConstraintViolation<Film>> constraintViolations = validator.validate(film);
+        assertEquals(0, constraintViolations.size());
     }
 
     @Test

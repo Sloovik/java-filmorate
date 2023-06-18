@@ -2,7 +2,6 @@ package ru.yandex.practicum.filmorate.model;
 
 
 import org.junit.jupiter.api.Test;
-import ru.yandex.practicum.filmorate.model.User;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -24,6 +23,13 @@ public class UserTest {
         try (ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory()) {
             validator = validatorFactory.usingContext().getValidator();
         }
+    }
+
+    @Test
+    public void userIsValid() {
+        user = new User(1, "test@test.ru", "Login", "Name", LocalDate.parse("1990-12-24"));
+        Set<ConstraintViolation<User>> constraintViolations = validator.validate(user);
+        assertEquals(0, constraintViolations.size());
     }
 
     @Test

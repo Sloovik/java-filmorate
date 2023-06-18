@@ -22,22 +22,18 @@ public class UserController {
 
     @PostMapping("/users")
     public User createUser(@Valid @RequestBody User user) throws ValidationException {
-        log.info("Create user: {} - Started", user);
-        User newUser = repository.create(user);
-        log.info("Create user: {} - Finished", user);
-        return newUser;
+        log.info("Post request to create user, {}", user);
+        return repository.create(user);
     }
 
     @PutMapping("/users")
     public User updateUser(@Valid @RequestBody User user) throws ValidationException {
-        log.info("Update user: {} - Started", user);
+        log.info("Put request to update user, {}", user);
         int id = user.getId();
         if (id == 0) {
             throw new ValidationException("Ошибка в id пользователя");
         }
-        User updatedUser = repository.update(user);
-        log.info("Update user: {} - Finished", user);
-        return updatedUser;
+        return repository.update(user);
     }
 
     @GetMapping("/users")
