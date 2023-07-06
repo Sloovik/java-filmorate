@@ -26,7 +26,7 @@ public class Film {
     @ReleaseDateConstraint
     private LocalDate releaseDate;
     @Positive
-    private Integer duration;
+    private int duration;
     private Set<Long> likedUsers;
     private int likeCount;
 
