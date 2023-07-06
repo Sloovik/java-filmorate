@@ -2,7 +2,6 @@ package ru.yandex.practicum.filmorate.repository;
 
 import org.springframework.stereotype.Repository;
 import ru.yandex.practicum.filmorate.exception.ObjectNotFoundException;
-import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.User;
 
 import java.util.HashMap;
@@ -20,7 +19,6 @@ public class UserRepository implements CrudRepository<User> {
 
     @Override
     public User create(User user) {
-        checkUserName(user);
         User newUser = user
                 .toBuilder()
                 .id(nextUserId++)
@@ -40,9 +38,8 @@ public class UserRepository implements CrudRepository<User> {
     public User update(User user) {
         User existingUser = users.get(user.getId());
         if (existingUser == null) {
-            throw new ValidationException("Несуществующий id пользователя");
+            throw new ObjectNotFoundException("Несуществующий id пользователя");
         }
-        checkUserName(user);
         existingUser.setEmail(user.getEmail());
         existingUser.setLogin(user.getLogin());
         existingUser.setName(user.getName());
@@ -59,9 +56,4 @@ public class UserRepository implements CrudRepository<User> {
         return user;
     }
 
-    private void checkUserName(User user) {
-        if (user.getName() == null || user.getName().isBlank()) {
-            user.setName(user.getLogin());
-        }
-    }
 }

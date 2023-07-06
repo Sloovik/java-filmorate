@@ -2,7 +2,6 @@ package ru.yandex.practicum.filmorate.repository;
 
 import org.springframework.stereotype.Repository;
 import ru.yandex.practicum.filmorate.exception.ObjectNotFoundException;
-import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.Film;
 
 import java.util.HashMap;
@@ -38,7 +37,7 @@ public class FilmRepository implements CrudRepository<Film> {
     public Film update(Film film) {
         Film existingFilm = films.get(film.getId());
         if (existingFilm == null) {
-            throw new ValidationException("Несуществующий id фильма");
+            throw new ObjectNotFoundException("Несуществующий id фильма");
         }
         existingFilm.setName(film.getName());
         existingFilm.setDescription(film.getDescription());

@@ -4,6 +4,7 @@ package ru.yandex.practicum.filmorate.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import ru.yandex.practicum.filmorate.exception.InvalidValueException;
 import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.Film;
 import ru.yandex.practicum.filmorate.service.FilmService;
@@ -30,11 +31,11 @@ public class FilmController {
     }
 
     @PutMapping()
-    public Film updateMovie(@Valid @RequestBody Film film) throws ValidationException {
+    public Film updateMovie(@Valid @RequestBody Film film) {
         log.info("Put request to update film, {}", film);
         Long id = film.getId();
         if (id == 0) {
-            throw new ValidationException("Incorrect film id");
+            throw new InvalidValueException("Incorrect film id");
         }
         return filmService.updateFilm(film);
     }

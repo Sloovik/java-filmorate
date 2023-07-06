@@ -3,7 +3,6 @@ package ru.yandex.practicum.filmorate.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.User;
 import ru.yandex.practicum.filmorate.service.UserService;
 
@@ -21,18 +20,14 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/users")
-    public User createUser(@Valid @RequestBody User user) throws ValidationException {
+    public User createUser(@Valid @RequestBody User user) {
         log.info("Post request to create user, {}", user);
         return userService.createUser(user);
     }
 
     @PutMapping("/users")
-    public User updateUser(@Valid @RequestBody User user) throws ValidationException {
+    public User updateUser(@Valid @RequestBody User user) {
         log.info("Put request to update user, {}", user);
-        Long id = user.getId();
-        if (id == 0) {
-            throw new ValidationException("Ошибка в id пользователя");
-        }
         return userService.updateUser(user);
     }
 
