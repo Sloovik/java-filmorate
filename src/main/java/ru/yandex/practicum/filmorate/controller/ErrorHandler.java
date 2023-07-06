@@ -13,6 +13,9 @@ import ru.yandex.practicum.filmorate.model.ErrorResponse;
 import javax.validation.ConstraintViolationException;
 import javax.validation.ValidationException;
 
+/**
+ * Class for request errors
+ */
 @Slf4j
 @ControllerAdvice("ru.yandex.practicum.filmorate.controller")
 public class ErrorHandler {

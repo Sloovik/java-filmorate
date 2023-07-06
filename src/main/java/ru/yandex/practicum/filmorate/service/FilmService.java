@@ -9,6 +9,9 @@ import ru.yandex.practicum.filmorate.repository.CrudRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Service for film repo
+ */
 @Service
 @RequiredArgsConstructor
 public class FilmService {

@@ -6,6 +6,7 @@ import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.User;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -14,8 +15,8 @@ import java.util.Map;
  */
 @Repository
 public class UserRepository implements CrudRepository<User>{
-    private final Map<Integer, User> users = new HashMap<>();
-    private int nextUserId = 1;
+    private final Map<Long, User> users = new HashMap<>();
+    private Long nextUserId = 1L;
 
     @Override
     public User create(User user) {
@@ -23,6 +24,7 @@ public class UserRepository implements CrudRepository<User>{
         User newUser = user
                 .toBuilder()
                 .id(nextUserId++)
+                .friends(new HashSet<>())
                 .build();
 
         users.put(newUser.getId(), newUser);

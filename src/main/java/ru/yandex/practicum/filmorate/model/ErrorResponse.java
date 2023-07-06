@@ -1,5 +1,8 @@
 package ru.yandex.practicum.filmorate.model;
 
+/**
+ * Class for displaying response errors
+ */
 public class ErrorResponse {
     String error;
     String description;
