@@ -9,5 +9,5 @@ public interface CrudRepository<T> {
 
     T update(T t);
 
-    T getById(Long id);
+    T getById(Integer id);
 }
