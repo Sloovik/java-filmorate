@@ -13,19 +13,19 @@ import java.util.List;
  * Endpoints for users
  */
 @RestController
-@RequestMapping
+@RequestMapping("/users")
 @Slf4j
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
 
-    @PostMapping("/users")
+    @PostMapping
     public User createUser(@Valid @RequestBody User user) {
         log.info("Post request to create user, {}", user);
         return userService.createUser(user);
     }
 
-    @PutMapping("/users")
+    @PutMapping
     public User updateUser(@Valid @RequestBody User user) {
         log.info("Put request to update user, {}", user);
         return userService.updateUser(user);
