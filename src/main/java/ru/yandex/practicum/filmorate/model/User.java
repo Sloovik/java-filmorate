@@ -13,7 +13,6 @@ import java.util.Set;
 @Data
 @Builder(toBuilder = true)
 public class User {
-    @NotNull
     private final Long id;
     @Email
     @NotEmpty
