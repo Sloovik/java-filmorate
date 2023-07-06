@@ -1,6 +1,7 @@
 package ru.yandex.practicum.filmorate.repository;
 
 import org.springframework.stereotype.Repository;
+import ru.yandex.practicum.filmorate.exception.ObjectNotFoundException;
 import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.Film;
 
@@ -12,10 +13,11 @@ import java.util.Map;
  * Repository for film controller
  */
 @Repository
-public class FilmRepository {
+public class FilmRepository implements CrudRepository<Film> {
     private final Map<Integer, Film> films = new HashMap<>();
     private int nextFilmId = 1;
 
+    @Override
     public Film create(Film film) {
         Film newFilm = film
                 .toBuilder()
@@ -25,10 +27,12 @@ public class FilmRepository {
         return newFilm;
     }
 
+    @Override
     public List<Film> read() {
         return List.copyOf(films.values());
     }
 
+    @Override
     public Film update(Film film) {
         Film existingFilm = films.get(film.getId());
         if (existingFilm == null) {
@@ -39,5 +43,14 @@ public class FilmRepository {
         existingFilm.setDuration(film.getDuration());
         existingFilm.setReleaseDate(film.getReleaseDate());
         return existingFilm;
+    }
+
+    @Override
+    public Film getById(Long id) {
+        Film film = films.get(id);
+        if (film == null) {
+            throw new ObjectNotFoundException("Несуществующий id фильма: " + id);
+        }
+        return film;
     }
 }
