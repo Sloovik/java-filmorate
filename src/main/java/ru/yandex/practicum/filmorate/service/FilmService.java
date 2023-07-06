@@ -48,7 +48,7 @@ public class FilmService {
         film.setLikeCount(film.getLikeCount() - 1);
     }
 
-    public List<Film> getMostPopularFilms(Long count) {
+    public List<Film> getMostPopularFilms(Integer count) {
         return filmRepository.read().stream()
                 .sorted((f1, f2) -> f2.getLikeCount() - f1.getLikeCount())
                 .limit(count)

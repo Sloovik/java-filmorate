@@ -50,7 +50,7 @@ public class UserService {
         userRepository.getById(friendId).getFriends().remove(userId);
     }
 
-    public List<User> getUserFriends(Long userId) { //list<user>
+    public List<User> getUserFriends(Long userId) {
         checkId(userId);
         List<User> result = new ArrayList<>();
         for (Long id : userRepository.getById(userId).getFriends()) {
