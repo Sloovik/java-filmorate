@@ -14,7 +14,7 @@ import java.util.Map;
  * Repository for user controller
  */
 @Repository
-public class UserRepository implements CrudRepository<User>{
+public class UserRepository implements CrudRepository<User> {
     private final Map<Long, User> users = new HashMap<>();
     private Long nextUserId = 1L;
 

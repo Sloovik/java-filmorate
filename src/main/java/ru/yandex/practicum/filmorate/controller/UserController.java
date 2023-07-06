@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.User;
-import ru.yandex.practicum.filmorate.repository.UserRepository;
 import ru.yandex.practicum.filmorate.service.UserService;
 
 import javax.validation.Valid;
@@ -66,6 +65,7 @@ public class UserController {
         log.info("Get request to get common friends: {} <-> {}", id, otherId);
         return userService.getCommonFriends(id, otherId);
     }
+
     @GetMapping("/users")
     public List<User> getUsers() {
         return userService.getUsers();
