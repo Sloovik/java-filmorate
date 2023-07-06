@@ -17,7 +17,7 @@ import java.util.Set;
 @Data
 @Builder(toBuilder = true)
 public class Film {
-    private final int id;
+    private final Long id;
     @NotBlank
     private String name;
     @Size(max = 200)

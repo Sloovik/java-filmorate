@@ -14,7 +14,7 @@ import java.util.Set;
 @Builder(toBuilder = true)
 public class User {
     @NotNull
-    private final int id;
+    private final Long id;
     @Email
     @NotEmpty
     private String email;

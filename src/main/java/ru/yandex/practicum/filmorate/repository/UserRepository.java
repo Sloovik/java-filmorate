@@ -49,7 +49,7 @@ public class UserRepository implements CrudRepository<User>{
     }
 
     @Override
-    public User getById(Integer id) {
+    public User getById(Long id) {
         User user = users.get(id);
         if (user == null) {
             throw new ObjectNotFoundException("Несуществующий id пользователя: " + id);

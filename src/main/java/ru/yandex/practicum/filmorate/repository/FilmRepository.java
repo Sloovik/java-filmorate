@@ -46,7 +46,7 @@ public class FilmRepository implements CrudRepository<Film> {
     }
 
     @Override
-    public Film getById(Integer id) {
+    public Film getById(Long id) {
         Film film = films.get(id);
         if (film == null) {
             throw new ObjectNotFoundException("Несуществующий id фильма: " + id);
