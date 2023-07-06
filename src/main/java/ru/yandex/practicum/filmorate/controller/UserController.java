@@ -61,7 +61,7 @@ public class UserController {
         return userService.getCommonFriends(id, otherId);
     }
 
-    @GetMapping("/users")
+    @GetMapping
     public List<User> getUsers() {
         return userService.getUsers();
     }
