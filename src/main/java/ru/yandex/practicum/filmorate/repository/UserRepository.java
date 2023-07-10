@@ -1,7 +1,7 @@
 package ru.yandex.practicum.filmorate.repository;
 
 import org.springframework.stereotype.Repository;
-import ru.yandex.practicum.filmorate.exception.ObjectNotFoundException;
+import ru.yandex.practicum.filmorate.exception.NotFoundException;
 import ru.yandex.practicum.filmorate.model.User;
 
 import java.util.HashMap;
@@ -30,7 +30,7 @@ public class UserRepository implements CrudRepository<User> {
     }
 
     @Override
-    public List<User> read() {
+    public List<User> getAll() {
         return List.copyOf(users.values());
     }
 
@@ -38,12 +38,21 @@ public class UserRepository implements CrudRepository<User> {
     public User update(User user) {
         User existingUser = users.get(user.getId());
         if (existingUser == null) {
-            throw new ObjectNotFoundException("Несуществующий id пользователя");
+            throw new NotFoundException("Несуществующий id пользователя");
         }
-        existingUser.setEmail(user.getEmail());
-        existingUser.setLogin(user.getLogin());
-        existingUser.setName(user.getName());
-        existingUser.setBirthday(user.getBirthday());
+        if (user.getEmail() != null) {
+            existingUser.setEmail(user.getEmail());
+        }
+        if (user.getLogin() != null) {
+            existingUser.setLogin(user.getLogin());
+        }
+        if (user.getName() != null) {
+            existingUser.setName(user.getName());
+        }
+        if (user.getBirthday() != null) {
+            existingUser.setBirthday(user.getBirthday());
+        }
+
         return existingUser;
     }
 
@@ -51,7 +60,7 @@ public class UserRepository implements CrudRepository<User> {
     public User getById(Long id) {
         User user = users.get(id);
         if (user == null) {
-            throw new ObjectNotFoundException("Несуществующий id пользователя: " + id);
+            throw new NotFoundException("Несуществующий id пользователя: " + id);
         }
         return user;
     }

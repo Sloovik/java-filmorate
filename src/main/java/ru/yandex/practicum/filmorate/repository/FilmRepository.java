@@ -1,7 +1,7 @@
 package ru.yandex.practicum.filmorate.repository;
 
 import org.springframework.stereotype.Repository;
-import ru.yandex.practicum.filmorate.exception.ObjectNotFoundException;
+import ru.yandex.practicum.filmorate.exception.NotFoundException;
 import ru.yandex.practicum.filmorate.model.Film;
 
 import java.util.HashMap;
@@ -29,7 +29,7 @@ public class FilmRepository implements CrudRepository<Film> {
     }
 
     @Override
-    public List<Film> read() {
+    public List<Film> getAll() {
         return List.copyOf(films.values());
     }
 
@@ -37,12 +37,21 @@ public class FilmRepository implements CrudRepository<Film> {
     public Film update(Film film) {
         Film existingFilm = films.get(film.getId());
         if (existingFilm == null) {
-            throw new ObjectNotFoundException("Несуществующий id фильма");
+            throw new NotFoundException("Несуществующий id фильма");
         }
-        existingFilm.setName(film.getName());
-        existingFilm.setDescription(film.getDescription());
-        existingFilm.setDuration(film.getDuration());
-        existingFilm.setReleaseDate(film.getReleaseDate());
+        if (film.getName() != null) {
+            existingFilm.setName(film.getName());
+        }
+        if (film.getDescription() != null) {
+            existingFilm.setDescription(film.getDescription());
+        }
+        if (film.getDuration() != null) {
+            existingFilm.setDuration(film.getDuration());
+        }
+        if (film.getReleaseDate() != null) {
+            existingFilm.setReleaseDate(film.getReleaseDate());
+        }
+
         return existingFilm;
     }
 
@@ -50,7 +59,7 @@ public class FilmRepository implements CrudRepository<Film> {
     public Film getById(Long id) {
         Film film = films.get(id);
         if (film == null) {
-            throw new ObjectNotFoundException("Несуществующий id фильма: " + id);
+            throw new NotFoundException("Несуществующий id фильма: " + id);
         }
         return film;
     }

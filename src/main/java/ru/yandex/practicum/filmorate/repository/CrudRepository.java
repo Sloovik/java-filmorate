@@ -10,7 +10,7 @@ import java.util.List;
 public interface CrudRepository<T> {
     T create(T t);
 
-    List<T> read();
+    List<T> getAll();
 
     T update(T t);
 

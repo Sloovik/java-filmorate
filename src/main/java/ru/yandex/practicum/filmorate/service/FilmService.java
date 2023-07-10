@@ -18,7 +18,7 @@ public class FilmService {
     private final CrudRepository<Film> filmRepository;
 
     public List<Film> getFilms() {
-        return filmRepository.read();
+        return filmRepository.getAll();
     }
 
     public Film getFilmById(Long filmId) {
@@ -52,7 +52,7 @@ public class FilmService {
     }
 
     public List<Film> getMostPopularFilms(Integer count) {
-        return filmRepository.read().stream()
+        return filmRepository.getAll().stream()
                 .sorted((f1, f2) -> f2.getLikeCount() - f1.getLikeCount())
                 .limit(count)
                 .collect(Collectors.toList());
