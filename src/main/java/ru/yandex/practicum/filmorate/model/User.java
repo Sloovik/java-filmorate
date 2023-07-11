@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.validation.constraints.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 /**
  * User entity
@@ -12,8 +13,7 @@ import java.time.LocalDate;
 @Data
 @Builder(toBuilder = true)
 public class User {
-    @NotNull
-    private final int id;
+    private final Long id;
     @Email
     @NotEmpty
     private String email;
@@ -24,5 +24,6 @@ public class User {
     @PastOrPresent
     @NotNull
     private LocalDate birthday;
+    private Set<Long> friends;
 
 }

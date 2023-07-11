@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -30,26 +31,31 @@ public class FilmTest {
 
     @Test
     public void filmIsValid() {
-        film = new Film(1, "Name", "Description", LocalDate.parse("1990-12-24"), 120);
+        Set<Long> users = new HashSet<>();
+        users.add(1L);
+
+        film = new Film(1L, "Name", "Description", LocalDate.parse("1990-12-24"), 120, users, 1);
         Set<ConstraintViolation<Film>> constraintViolations = validator.validate(film);
         assertEquals(0, constraintViolations.size());
     }
 
     @Test
     public void shouldValidateName() {
-        film = new Film(1, null, "Description", LocalDate.parse("1990-12-24"), 120);
+        Set<Long> users = new HashSet<>();
+        users.add(1L);
+        film = new Film(1L, null, "Description", LocalDate.parse("1990-12-24"), 120, users, 1);
         validates = validator.validate(film);
         validate = validates.iterator().next();
         assertEquals(NotBlank.class, validate.getConstraintDescriptor().getAnnotation().annotationType(), "валидация на null");
         assertEquals("name", validate.getPropertyPath().toString(), "валидация на null, property");
 
-        film = new Film(1, "", "Description", LocalDate.parse("1990-12-24"), 120);
+        film = new Film(1L, "", "Description", LocalDate.parse("1990-12-24"), 120, users, 1);
         validates = validator.validate(film);
         validate = validates.iterator().next();
         assertEquals(NotBlank.class, validate.getConstraintDescriptor().getAnnotation().annotationType(), "валидация на empty");
         assertEquals("name", validate.getPropertyPath().toString(), "валидация на empty, property");
 
-        film = new Film(1, "   ", "Description", LocalDate.parse("1990-12-24"), 120);
+        film = new Film(1L, "   ", "Description", LocalDate.parse("1990-12-24"), 120, users, 1);
         validates = validator.validate(film);
         validate = validates.iterator().next();
         assertEquals(NotBlank.class, validate.getConstraintDescriptor().getAnnotation().annotationType(), "валидация на blank");
@@ -58,15 +64,17 @@ public class FilmTest {
 
     @Test
     public void shouldValidateDescription() {
-        film = new Film(1, "Name", null, LocalDate.parse("1990-12-24"), 120);
+        Set<Long> users = new HashSet<>();
+        users.add(1L);
+        film = new Film(1L, "Name", null, LocalDate.parse("1990-12-24"), 120, users, 1);
         validates = validator.validate(film);
         validate = validates.iterator().next();
         assertEquals(NotNull.class, validate.getConstraintDescriptor().getAnnotation().annotationType(), "валидация на null");
         assertEquals("description", validate.getPropertyPath().toString(), "валидация на null, property");
 
-        film = new Film(1, "Name", "DescriptionDescriptionDescriptionDescriptionDescription" +
+        film = new Film(1L, "Name", "DescriptionDescriptionDescriptionDescriptionDescription" +
                 "DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription" +
-                "DescriptionDescriptionDescriptionDescriptionDescription", LocalDate.parse("1990-12-24"), 120);
+                "DescriptionDescriptionDescriptionDescriptionDescription", LocalDate.parse("1990-12-24"), 120, users, 1);
         validates = validator.validate(film);
         validate = validates.iterator().next();
         assertEquals(Size.class, validate.getConstraintDescriptor().getAnnotation().annotationType(), "описание более 200 символов");
@@ -75,13 +83,15 @@ public class FilmTest {
 
     @Test
     public void shouldValidateReleaseDate() {
-        film = new Film(1, "Name", "Description", null, 120);
+        Set<Long> users = new HashSet<>();
+        users.add(1L);
+        film = new Film(1L, "Name", "Description", null, 120, users, 1);
         validates = validator.validate(film);
         validate = validates.iterator().next();
         assertEquals(ReleaseDateConstraint.class, validate.getConstraintDescriptor().getAnnotation().annotationType(), "валидация на null");
         assertEquals("releaseDate", validate.getPropertyPath().toString(), "валидация на null, property");
 
-        film = new Film(1, "Name", "Description", LocalDate.parse("1800-12-24"), 120);
+        film = new Film(1L, "Name", "Description", LocalDate.parse("1800-12-24"), 120, users, 1);
         validates = validator.validate(film);
         validate = validates.iterator().next();
         assertEquals(ReleaseDateConstraint.class, validate.getConstraintDescriptor().getAnnotation().annotationType(),
@@ -92,13 +102,15 @@ public class FilmTest {
 
     @Test
     public void shouldValidateDuration() {
-        film = new Film(1, "Name", "Description", LocalDate.parse("1990-12-24"), -1);
+        Set<Long> users = new HashSet<>();
+        users.add(1L);
+        film = new Film(1L, "Name", "Description", LocalDate.parse("1990-12-24"), -1, users, 1);
         validates = validator.validate(film);
         validate = validates.iterator().next();
         assertEquals(Positive.class, validate.getConstraintDescriptor().getAnnotation().annotationType(), "продолжительность <= 0");
         assertEquals("duration", validate.getPropertyPath().toString(), "продолжительность <= 0, property");
 
-        film = new Film(1, "Name", "Description", LocalDate.parse("1990-12-24"), 0);
+        film = new Film(1L, "Name", "Description", LocalDate.parse("1990-12-24"), 0, users, 1);
         validates = validator.validate(film);
         validate = validates.iterator().next();
         assertEquals(Positive.class, validate.getConstraintDescriptor().getAnnotation().annotationType(), "продолжительность <= 0");
